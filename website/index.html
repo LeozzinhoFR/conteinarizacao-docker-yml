@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Roncolato</title>
+    <style>
+        /* Reset básico e definição da fonte estilo terminal */
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Courier New', Courier, monospace; /* Fonte monoespaçada é essencial para o look hacker */
+            background-color: #000000; /* Fundo preto total */
+            overflow: hidden; /* Evita barras de rolagem */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Container principal centralizado */
+        .terminal-container {
+            text-align: center;
+            position: relative;
+            z-index: 2; /* Garante que o texto fique acima das linhas de varredura */
+            padding: 2rem;
+            border: 2px solid #0f0; /* Borda verde estilo terminal */
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2); /* Brilho na borda */
+            background-color: rgba(0, 20, 0, 0.8); /* Fundo semi-transparente */
+        }
+
+        /* O texto principal "RONCOLATO" */
+        h1.main-text {
+            margin: 0;
+            font-size: 4rem; /* Tamanho grande */
+            color: #39ff14; /* Verde neon intenso */
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            /* Efeito de brilho neon (Glow) usando múltiplas sombras */
+            text-shadow: 
+                0 0 5px #39ff14,
+                0 0 10px #39ff14,
+                0 0 20px #00ff00,
+                0 0 40px #00ff00;
+            animation: pulse 2s infinite alternate;
+        }
+
+        /* O texto secundário em baixo */
+        h2.sub-text {
+            margin-top: 15px;
+            font-size: 1.5rem; /* Menor */
+            color: #00cc00; /* Um verde um pouco mais escuro para contraste */
+            font-weight: normal;
+            text-shadow: 0 0 5px #00cc00;
+            position: relative;
+        }
+
+        /* Adiciona um "cursor" piscando no final da frase secundária */
+        h2.sub-text::after {
+            content: '_';
+            animation: blink 1s step-end infinite;
+        }
+
+        /* --- EFEITOS ESPECIAIS DE FUNDO --- */
+
+        /* Efeito de Scanlines (linhas de monitor CRT antigo) */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                transparent 0px,
+                transparent 2px,
+                rgba(0, 255, 0, 0.1) 3px,
+                rgba(0, 255, 0, 0.1) 4px
+            );
+            pointer-events: none; /* Permite clicar através das linhas */
+            z-index: 1;
+        }
+
+        /* Efeito de vinheta para escurecer os cantos da tela */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, transparent 60%, black 100%);
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        /* --- ANIMAÇÕES --- */
+
+        /* Animação para o texto principal pulsar levemente */
+        @keyframes pulse {
+            0% { opacity: 1; text-shadow: 0 0 5px #39ff14, 0 0 20px #00ff00; }
+            100% { opacity: 0.8; text-shadow: 0 0 2px #39ff14, 0 0 10px #00ff00; }
+        }
+
+        /* Animação do cursor piscando */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Responsividade para celulares */
+        @media (max-width: 600px) {
+            h1.main-text { font-size: 2.5rem; }
+            h2.sub-text { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="terminal-container">
+        <h1 class="main-text">RONCOLATO</h1>
+        <h2 class="sub-text">fez o dever de casa</h2>
+    </div>
+
+</body>
+</html>
